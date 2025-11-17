@@ -15,9 +15,14 @@
             Padding="10"
             BorderBrush="{StaticResource BrushSideBackground}"
             BorderThickness="2">
-       <ScrollViewer>
+       <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
-            <ItemsControl 
+                <TextBlock Text="Álbumes"
+                       Foreground="{StaticResource BrushTextPrimary}"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="5,0,0,10"/>
+                <ItemsControl 
                 ItemsSource="{Binding ListAlbums}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -53,7 +58,45 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </StackPanel>
+
+                <TextBlock Text="Artistas"
+                           Foreground="{StaticResource BrushTextPrimary}"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="5,0,0,10"/>
+                <ItemsControl ItemsSource="{Binding ListArtists}"
+                              Foreground="{StaticResource BrushTextPrimary}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel Margin="10,0,0,0">
+                                <Image Source="{Binding ProfilePicUrl}"
+                                   Width="100"
+                                   Height="100"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"/>
+                                    </Image.Clip>
+                                </Image>
+                                <TextBlock Text="{Binding Name}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,10,0,0"
+                                           FontWeight="Bold"/>
+                            </StackPanel>
+                            
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
     </ScrollViewer> 
     </Border>
     

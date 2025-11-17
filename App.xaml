@@ -37,8 +37,49 @@
         <Style TargetType="StackPanel">
             <Setter Property="Background" Value="Transparent"/>
         </Style>
-        
-        
+
+        <Style x:Key="ArtistaCardStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <!-- Contenedor cuadrado para avatar -->
+                            <Grid Width="100" Height="100" Background="Transparent">
+                                <!-- Ellipse de fondo (fallback si no hay imagen) -->
+                                <Ellipse x:Name="AvatarCirculo"
+                                         Width="100"
+                                         Height="100"
+                                         Fill="#EEEEEE"/>
+                                <!-- Imagen recortada a forma circular; Source enlazado al Tag del Button -->
+                                <Image Source="{TemplateBinding Tag}"
+                                       Width="100"
+                                       Height="100"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"/>
+                                    </Image.Clip>
+                                </Image>
+                            </Grid>
+
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,10,0,0"
+                                       FontWeight="Bold"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="AvatarCirculo" Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Application.Resources>
 </Application>
