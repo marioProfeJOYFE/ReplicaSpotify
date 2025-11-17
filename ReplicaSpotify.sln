@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicaSpotify", "ReplicaSpotify.csproj", "{35909A27-D0DE-4298-9258-898CC550920B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35909A27-D0DE-4298-9258-898CC550920B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35909A27-D0DE-4298-9258-898CC550920B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35909A27-D0DE-4298-9258-898CC550920B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35909A27-D0DE-4298-9258-898CC550920B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17CB6729-BB76-4296-8DAB-48B13A005F3F}
+	EndGlobalSection
+EndGlobal
