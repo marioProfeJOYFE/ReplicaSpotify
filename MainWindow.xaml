@@ -60,6 +60,60 @@
             </Border>
             <Frame Grid.Column="1"
                    x:Name="MainFrame"/>
+            <Border Grid.Column="2"
+                Margin="5"
+                Background="{StaticResource BrushSideBackground}"
+                CornerRadius="15"
+                Padding="10"
+                BorderBrush="{StaticResource BrushSideBackground}"
+                BorderThickness="2">
+                <StackPanel x:Name="SideBarActualSong">
+                    <TextBlock Text="{Binding SelectedAlbum.Name}" 
+                       Foreground="{StaticResource BrushTextPrimary}"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+                    <Image Source="{Binding SelectedAlbum.CoverUrl}"
+                           Width="80"
+                           Height="80"/>
+                    <TextBlock Text="{Binding SelectedTrack.Title}" 
+                       Foreground="{StaticResource BrushTextPrimary}"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Margin="0,0,0,5"/>
+                    <ItemsControl ItemsSource="{Binding SelectedTrack.Artists}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock 
+                                    FontSize="8"
+                                    Text="{Binding Name}" 
+                                    Foreground="{StaticResource BrushTextSecondary}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Image 
+                       Source="{Binding SelectedArtist.ProfilePicUrl}"
+                       Width="80"
+                       Height="80">
+                        <Image.Clip>
+                            <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                        </Image.Clip>
+                    </Image>
+                    <TextBlock Text="{Binding SelectedArtist.Name}" 
+                       Foreground="{StaticResource BrushTextPrimary}"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+                </StackPanel>
+            </Border>
+
         </Grid>
         
     </Grid>

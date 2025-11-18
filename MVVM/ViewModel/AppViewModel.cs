@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ReplicaSpotify.MVVM.ViewModel
 {
@@ -16,10 +17,63 @@ namespace ReplicaSpotify.MVVM.ViewModel
         public ObservableCollection<Album> ListAlbums { get; set; } = new ObservableCollection<Album>();
         public ObservableCollection<Artist> ListArtists { get; set; } = new ObservableCollection<Artist>();
 
+        private Album _selectedAlbum;
+
+        private Track _selectedTrack;
+
+        private Playlist _selectedPlaylist;
+
+        private Artist _selectedArtist;
+
+        public ICommand SelectAlbumCommand { get; set; }
+
+
+        public Artist SelectedArtist
+        {
+            get { return _selectedArtist; }
+            set
+            {
+                _selectedArtist = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Track SelectedTrack
+        {
+            get { return _selectedTrack; }
+            set
+            {
+                _selectedTrack = value;
+                SelectedArtist = _selectedTrack?.Artists[0] ?? new Artist() { Name = "Default"};
+                OnPropertyChanged();
+            }
+        }
+
+        public Album SelectedAlbum
+        {
+            get { return _selectedAlbum; }
+            set
+            {
+                _selectedAlbum = value;
+                SelectedTrack = _selectedAlbum?.Tracks[0];
+                OnPropertyChanged();
+            }
+        }
+
+        public void SelectAlbum(object parameter)
+        {
+            if (parameter is Album pepe)
+            {
+                SelectedAlbum = pepe;
+            }
+        }
+
         public AppViewModel()
         {
             CargarDatosPlaylists();
             CargarDatosAlbums();
+            SelectedAlbum = ListAlbums[0];
+            SelectAlbumCommand = new RelayCommand(SelectAlbum);
         }
 
         private void CargarDatosPlaylists()

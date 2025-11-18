@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ReplicaSpotify.MVVM.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,10 +17,12 @@ namespace ReplicaSpotify
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainPage mainPage = new MainPage();
+
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new MVVM.View.MainPage());
+            MainFrame.Navigate(mainPage);
         }
     }
 }
