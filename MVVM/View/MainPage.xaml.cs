@@ -24,5 +24,6 @@ namespace ReplicaSpotify.MVVM.View
         {
             InitializeComponent();
         }
+
     }
 }

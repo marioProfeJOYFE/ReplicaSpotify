@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ReplicaSpotify.MVVM.Model
 {
@@ -13,6 +14,8 @@ namespace ReplicaSpotify.MVVM.Model
         public List<Artist> Artists { get; set; } = new List<Artist>();
         public string Duration { get; set; }
         public string AudioUrl { get; set; }
+        public ImageBrush CoverUrl { get; set; }
         public string AlbumId { get; set; }
+
     }
 }

@@ -44,6 +44,7 @@
             BorderThickness="2">
        <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
+
                 <TextBlock Text="Álbumes"
                        Foreground="{StaticResource BrushTextPrimary}"
                        FontSize="24"
@@ -60,29 +61,39 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border 
-                            Width="350"
-                            Margin="10"
-                            Background="{StaticResource BrushPanel}"
-                            CornerRadius="10"
-                            BorderBrush="{StaticResource BrushSideBackground}"
-                            BorderThickness="2">
-                            <StackPanel Orientation="Horizontal">
-                                
-                                <Image Source="{Binding CoverUrl}"
-                                       Width="40"
-                                       Height="40"
-                                       Margin="0,0,10,0"/>
-                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding Name}"
-                                                Foreground="{StaticResource BrushTextPrimary}"
-                                               FontSize="18"
-                                               FontWeight="Bold"/>
+                            <Button Width="350"
+                                Command="{Binding SelectAlbumCommand}"
+                                Margin="10"
+                                Background="{StaticResource BrushPanel}"
+                                BorderBrush="{StaticResource BrushSideBackground}"
+                                BorderThickness="2"
+                                Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="10"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding CoverUrl}"
+                                           Width="40"
+                                           Height="40"
+                                           Margin="0,0,10,0"/>
+
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Name}"
+                                                   Foreground="{StaticResource BrushTextPrimary}"
+                                                   FontSize="18"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        
-                    </DataTemplate>
+                            </Button>
+                        </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 

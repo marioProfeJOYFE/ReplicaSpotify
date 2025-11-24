@@ -155,12 +155,19 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76B;"/>
 
-                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE768;"/>
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE768;" Click="Button_Click"/>
 
                             <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76C;"/></StackPanel>
                         <Slider Grid.Row="1" Minimum="0" Maximum="100" Style="{StaticResource SpotifySliderStyle}"/>
                     </Grid>
                 </Grid>
+                <StackPanel Grid.Column="2">
+                    <Button x:Name="BtnCargarCancion" 
+                             Height="50"
+                             Width="200"
+                             Content="Cargar Cancion" Click="BtnCargarCancion_Click"/>
+
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
