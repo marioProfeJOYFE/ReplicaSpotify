@@ -153,12 +153,13 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76B;"/>
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76B;" Click="Button_Click_1"/>
 
                             <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE768;" Click="Button_Click"/>
 
-                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76C;"/></StackPanel>
-                        <Slider Grid.Row="1" Minimum="0" Maximum="100" Style="{StaticResource SpotifySliderStyle}"/>
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76C;" Click="Button_Click_2"/></StackPanel>
+                        <Slider x:Name="SliderCancion"
+                            Grid.Row="1" Minimum="0" Style="{StaticResource SpotifySliderStyle}" ValueChanged="SliderCancion_ValueChanged"/>
                     </Grid>
                 </Grid>
                 <StackPanel Grid.Column="2">

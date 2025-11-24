@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ReplicaSpotify
 {
@@ -25,10 +26,16 @@ namespace ReplicaSpotify
 
         private Boolean isPlaying = false;
 
+        // Crear un temporizador para actualizar la posición de la canción
+        DispatcherTimer _timer = new DispatcherTimer();
+
         public MainWindow()
         {
             InitializeComponent();
             musicPlayer = new MediaPlayer();
+            _timer.Interval = TimeSpan.FromMilliseconds(1000);
+            _timer.Tick += new EventHandler(ticktock);
+            _timer.Start();
             MainFrame.Navigate(mainPage);
         }
 
@@ -57,6 +64,7 @@ namespace ReplicaSpotify
                         musicPlayer.Open(new Uri(cancion.AudioUrl, UriKind.Absolute));
                         musicPlayer.Play();
                         isPlaying = true;
+                        SliderCancion.Maximum = ficheroCancion.Properties.Duration.TotalSeconds;
                     }
 
                 }
@@ -74,6 +82,29 @@ namespace ReplicaSpotify
             {
                 musicPlayer.Play();
                 isPlaying = true;
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            musicPlayer.Position = TimeSpan.Zero;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            musicPlayer.Position = TimeSpan.FromSeconds(musicPlayer.Position.TotalSeconds + 15);
+        }
+
+        private void SliderCancion_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            musicPlayer.Position = TimeSpan.FromSeconds(SliderCancion.Value);
+        }
+
+        void ticktock(object sender, EventArgs e)
+        {
+            if (musicPlayer.NaturalDuration.HasTimeSpan)
+            {
+                SliderCancion.Value = musicPlayer.Position.TotalSeconds;
             }
         }
     }
