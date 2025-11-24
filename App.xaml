@@ -6,7 +6,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!-- Aplicar ViewModel a nivel GLOBAL de la aplicación -->
-        <vm:AppViewModel x:Key="AppViewModel"/>
+        <vm:AppViewModel x:Key="AppViewModel" />
         <!--  FIN -->
         <Color x:Key="ColorBackground">#FF121212</Color>
         <Color x:Key="ColorPanel">#FF181818</Color>
@@ -21,28 +21,28 @@
         <SolidColorBrush x:Key="BrushAccent" Color="{StaticResource ColorAccent}" />
         <SolidColorBrush x:Key="BrushAccentHover" Color="{StaticResource ColorAccentHover}" />
         <SolidColorBrush x:Key="BrushTextPrimary" Color="{StaticResource ColorTextPrimary}" />
-        <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource ColorTextSecondary}"/>
-        <SolidColorBrush x:Key="BrushSideBackground" Color="{StaticResource ColorSideBackground}"/>
+        <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource ColorTextSecondary}" />
+        <SolidColorBrush x:Key="BrushSideBackground" Color="{StaticResource ColorSideBackground}" />
 
         <Style TargetType="Window">
-            <Setter Property="Background" Value="{StaticResource BrushBackground}"/>
+            <Setter Property="Background" Value="{StaticResource BrushBackground}" />
             <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
             <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
 
         <Style TargetType="Grid">
-            <Setter Property="Background" Value="{StaticResource BrushBackground}"/>
+            <Setter Property="Background" Value="{StaticResource BrushBackground}" />
         </Style>
 
         <Style TargetType="StackPanel">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent" />
         </Style>
 
         <Style x:Key="ArtistaCardStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -53,7 +53,7 @@
                                 <Ellipse x:Name="AvatarCirculo"
                                          Width="100"
                                          Height="100"
-                                         Fill="#EEEEEE"/>
+                                         Fill="#EEEEEE" />
                                 <!-- Imagen recortada a forma circular; Source enlazado al Tag del Button -->
                                 <Image Source="{TemplateBinding Tag}"
                                        Width="100"
@@ -61,7 +61,7 @@
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center">
                                     <Image.Clip>
-                                        <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"/>
+                                        <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50" />
                                     </Image.Clip>
                                 </Image>
                             </Grid>
@@ -69,13 +69,91 @@
                             <TextBlock Text="{TemplateBinding Content}"
                                        HorizontalAlignment="Center"
                                        Margin="0,10,0,0"
-                                       FontWeight="Bold"/>
+                                       FontWeight="Bold" />
                         </StackPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="AvatarCirculo" Property="Opacity" Value="0.3"/>
+                                <Setter TargetName="AvatarCirculo" Property="Opacity" Value="0.3" />
                             </Trigger>
                         </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SpotifyMediaButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="Foreground" Value="#A7A7A7" /> <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="RepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SpotifySliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Track Grid.Row="1" x:Name="PART_Track" Margin="0,5">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Style="{StaticResource RepeatButtonStyle}"
+                                                  Command="{x:Static Slider.DecreaseLarge}" Background="#1ED760" />
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Style="{StaticResource RepeatButtonStyle}"
+                                                  Command="{x:Static Slider.IncreaseLarge}" Background="#535353" />
+                                </Track.IncreaseRepeatButton>
+
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Width="12" Height="12" Focusable="False">
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Thumb}">
+                                                <Border x:Name="ThumbBorder" CornerRadius="6" Background="White"
+                                                        BorderBrush="Transparent" BorderThickness="1"
+                                                        Visibility="Hidden" />
+                                                <ControlTemplate.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type Slider}}}"
+                                                        Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Visibility"
+                                                                Value="Visible" />
+                                                    </DataTrigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

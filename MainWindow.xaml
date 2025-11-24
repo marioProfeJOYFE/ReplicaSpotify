@@ -10,16 +10,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0"
                     Margin="5"
@@ -28,93 +28,140 @@
                     Padding="10"
                     BorderBrush="{StaticResource BrushSideBackground}"
                     BorderThickness="2">
-            <StackPanel x:Name="SideBarPlaylists">
-                <TextBlock Text="Tu Biblioteca" 
-                           Foreground="{StaticResource BrushTextSecondary}"
-                           FontSize="16"
-                           FontWeight="Bold"
-                           Margin="5,0,0,0"/>
+                <StackPanel x:Name="SideBarPlaylists">
+                    <TextBlock Text="Tu Biblioteca"
+                               Foreground="{StaticResource BrushTextSecondary}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="5,0,0,0" />
                     <ListBox Background="Transparent"
                              BorderBrush="Transparent"
                              Foreground="{StaticResource BrushTextPrimary}"
-                        ItemsSource="{Binding ListPlaylists}">
+                             ItemsSource="{Binding ListPlaylists}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="{Binding CoverUrl}"
                                            Width="40"
-                                           Height="40"
-                                        />
+                                           Height="40" />
                                     <StackPanel Margin="2.5,0,0,0">
-                                        <TextBlock Text="{Binding Name}"
-                                            />
+                                        <TextBlock Text="{Binding Name}" />
                                         <TextBlock Text="{Binding Description}"
-                                                   Foreground="{StaticResource BrushTextSecondary}" 
-                                            />
+                                                   Foreground="{StaticResource BrushTextSecondary}" />
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-            </StackPanel>
+                </StackPanel>
             </Border>
             <Frame Grid.Column="1"
-                   x:Name="MainFrame"/>
+                   x:Name="MainFrame" />
             <Border Grid.Column="2"
-                Margin="5"
-                Background="{StaticResource BrushSideBackground}"
-                CornerRadius="15"
-                Padding="10"
-                BorderBrush="{StaticResource BrushSideBackground}"
-                BorderThickness="2">
+                    Margin="5"
+                    Background="{StaticResource BrushSideBackground}"
+                    CornerRadius="15"
+                    Padding="10"
+                    BorderBrush="{StaticResource BrushSideBackground}"
+                    BorderThickness="2">
                 <StackPanel x:Name="SideBarActualSong">
-                    <TextBlock Text="{Binding SelectedAlbum.Name}" 
-                       Foreground="{StaticResource BrushTextPrimary}"
-                       FontSize="12"
-                       FontWeight="Bold"
-                       Margin="0,0,0,10"/>
+                    <TextBlock Text="{Binding SelectedAlbum.Name}"
+                               Foreground="{StaticResource BrushTextPrimary}"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10" />
                     <Image Source="{Binding SelectedAlbum.CoverUrl}"
                            Width="80"
-                           Height="80"/>
-                    <TextBlock Text="{Binding SelectedTrack.Title}" 
-                       Foreground="{StaticResource BrushTextPrimary}"
-                       FontSize="12"
-                       FontWeight="Bold"
-                       Margin="0,0,0,5"/>
+                           Height="80" />
+                    <TextBlock Text="{Binding SelectedTrack.Title}"
+                               Foreground="{StaticResource BrushTextPrimary}"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Margin="0,0,0,5" />
                     <ItemsControl ItemsSource="{Binding SelectedTrack.Artists}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel 
-                                    Orientation="Horizontal" 
-                                    HorizontalAlignment="Left"/>
+                                <WrapPanel
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Left" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock 
+                                <TextBlock
                                     FontSize="8"
-                                    Text="{Binding Name}" 
-                                    Foreground="{StaticResource BrushTextSecondary}"/>
+                                    Text="{Binding Name}"
+                                    Foreground="{StaticResource BrushTextSecondary}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Image 
-                       Source="{Binding SelectedArtist.ProfilePicUrl}"
-                       Width="80"
-                       Height="80">
+                    <Image
+                        Source="{Binding SelectedArtist.ProfilePicUrl}"
+                        Width="80"
+                        Height="80">
                         <Image.Clip>
-                            <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                            <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
                         </Image.Clip>
                     </Image>
-                    <TextBlock Text="{Binding SelectedArtist.Name}" 
-                       Foreground="{StaticResource BrushTextPrimary}"
-                       FontSize="12"
-                       FontWeight="Bold"
-                       Margin="0,0,0,10"/>
+                    <TextBlock Text="{Binding SelectedArtist.Name}"
+                               Foreground="{StaticResource BrushTextPrimary}"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10" />
                 </StackPanel>
             </Border>
-
         </Grid>
-        
+        <Border Grid.Row="2" BorderBrush="{StaticResource BrushPanel}" BorderThickness="0,0.5,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <Image Source="{Binding SelectedAlbum.CoverUrl}"
+                           Width="40"
+                           Height="40" />
+                    <StackPanel VerticalAlignment="Center" Margin="2,0,0,0">
+                        <TextBlock Text="{Binding SelectedTrack.Title}"
+                                   Foreground="{StaticResource BrushTextPrimary}" />
+                        <ItemsControl ItemsSource="{Binding SelectedTrack.Artists}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Left" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        FontSize="8"
+                                        Text="{Binding Name}"
+                                        Foreground="{StaticResource BrushTextSecondary}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76B;"/>
+
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE768;"/>
+
+                            <Button Style="{StaticResource SpotifyMediaButtonStyle}" Content="&#xE76C;"/></StackPanel>
+                        <Slider Grid.Row="1" Minimum="0" Maximum="100" Style="{StaticResource SpotifySliderStyle}"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
